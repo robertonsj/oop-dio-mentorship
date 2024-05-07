@@ -1,19 +1,26 @@
 package one.digitalinnovation.dominio;
 
 public class Curso extends Conteudo {
+	
+	private final int peso = 2;
 
-	private int cargaHoraria;
+	public Curso(String titulo, String tutor, int duracao) {
+		super(titulo,tutor, duracao);
+		// TODO Auto-generated constructor stub
+	}
+
 
 	@Override
 	public double calcularXp() {
-		return XP_PADRAO * cargaHoraria;
+		return getXP_PADRAO() * peso;
 	}
 
-	public int getCargaHoraria() {
-		return cargaHoraria;
+	@Override
+	public String toString() {
+		StringBuilder info = new StringBuilder("------------ *** ------------\n");
+		info.append("Curso" +  super.toString());
+		return info.toString();
 	}
-
-	public void setCargaHoraria(int cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
+	
+	
 }

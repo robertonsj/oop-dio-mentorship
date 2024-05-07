@@ -3,6 +3,9 @@
 Domínio: Bootcamps são eventos fantásticos disponíveis na Digital Innovation One (DIO), onde os Devs podem progredir em uma stack de desenvolvimento com conteúdos educacionais (Cursos e Mentorias) totalmente estruturados. Um Bootcamp é um evento patrocinado por uma grande empresa durante um período de tempo pré-estabelecido.
 Considerando o domínio descrito acima, criaremos um projeto Java que explore os pilares da Orientação a Objetos (OO) na prática.
 
+## Class Diagram
+![class diagram](class-diagram.png)
+
 ### Abstração
 Habilidade de concentrar-se nos aspectos essenciais de um domínio, ignorando características menos importantes ou acidentais. Nesse contexto, objetos são abstrações de entidades existentes no domínio em questão.
 

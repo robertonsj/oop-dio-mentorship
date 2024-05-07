@@ -6,50 +6,37 @@ import java.util.List;
 
 public class Bootcamp {
 
-	private String nome;
+	private String titulo;
 	private LocalDate inicio;
 	private LocalDate fim;
-	private List<Conteudo> conteudos = new ArrayList<>();
-	private List<Dev> devs = new ArrayList<>();
+	private List<Conteudo> listaDeConteudos;
+	private List<Dev> devs;
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public LocalDate getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(LocalDate inicio) {
+	public Bootcamp(String titulo, LocalDate inicio, int weeks) {
+		this.titulo = titulo;
 		this.inicio = inicio;
+		this.fim = inicio.plusWeeks(weeks);
+		this.listaDeConteudos = new ArrayList<>();
+		this.devs = new ArrayList<>();
+	}
+	
+	public List<Conteudo> getListaDeConteudos() {
+		return listaDeConteudos;
 	}
 
-	public LocalDate getFim() {
-		return fim;
-	}
 
-	public void setFim(LocalDate fim) {
-		this.fim = fim;
-	}
+	@Override
+	public String toString() {
+		StringBuilder conteudos = new StringBuilder("============ *** ============\n");
+		conteudos.append("Bootcamp - "+ titulo.toUpperCase() + "\n[Inicio=" + inicio + ", Fim="+ fim+"]\n");
+	
+		conteudos.append("Conteudos do Bootcamp:\n");
+		for(Conteudo conteudo : listaDeConteudos) {
+			conteudos.append("\t* " + conteudo.getTitulo() + "\n");
+		}
+		return conteudos.toString();
+		}
 
-	public List<Conteudo> getConteudos() {
-		return conteudos;
-	}
-
-	public void setConteudos(List<Conteudo> conteudos) {
-		this.conteudos = conteudos;
-	}
-
-	public List<Dev> getDevs() {
-		return devs;
-	}
-
-	public void setDevs(List<Dev> devs) {
-		this.devs = devs;
-	}
+	
 
 }

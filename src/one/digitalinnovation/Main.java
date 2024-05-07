@@ -1,5 +1,6 @@
 package one.digitalinnovation;
 
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -15,50 +16,28 @@ import one.digitalinnovation.dominio.Mentoria;
 public class Main {
 
 	public static void main(String[] args) {
-		Curso cursoJavaBasico = new Curso();
-		cursoJavaBasico.setTitulo("Java Básico");
-		cursoJavaBasico.setDescricao("Aprenda os conceitos básicos sobre Java.");
-		cursoJavaBasico.setCargaHoraria(8);
 		
-		Curso cursoDotNet = new Curso();
-		cursoDotNet.setTitulo("Java .NET");
-		cursoDotNet.setDescricao("Aprenda os conceitos básicos sobre C#.");
-		cursoDotNet.setCargaHoraria(8);
+		List<Conteudo> catalogoDaDio = new ArrayList<>();
+		Bootcamp bootcamp = new Bootcamp(
+				"FormaÃ§Ã£o Java Developer", LocalDate.of(2024, 01, 20), 8
+		);
 		
-		Curso cursoJavaAvancado = new Curso();
-		cursoJavaAvancado.setTitulo("Java Avançado");
-		cursoJavaAvancado.setDescricao("Aprenda os conceitos avançados sobre Java.");
-		cursoJavaAvancado.setCargaHoraria(8);
+		catalogoDaDio.add(new Curso("Agile Methodology", "Renan Oliveira", 30));
+		catalogoDaDio.add(new Curso("Java Basico", "Gleyson Sampaio", 50));
+		catalogoDaDio.add(new Curso("Java POO", "Gleyson Sampaio", 40));
+		catalogoDaDio.add(new Curso("Algorithm and DataStructure", "Gleyson Sampaio", 40));
+		catalogoDaDio.add(new Mentoria("GFT Start #2 Java", "Venilton Falvo", 2));
 		
-		Mentoria mentoria = new Mentoria();
-		mentoria.setTitulo("Aprendendo Orientação a Objetos com Java");
-		mentoria.setDescricao("Imersão sobre os pilares da Orientação a Objetos.");
-		mentoria.setData(LocalDateTime.now());
+		Mentoria mentoria = new Mentoria("GFT Start #3 Java", "Renan Oliveira", 3);
+		mentoria.setDatetime(LocalDateTime.of(2024, 2, 10, 10, 30));
+		catalogoDaDio.add(mentoria);
 		
-		Bootcamp bootcamp = new Bootcamp();
-		bootcamp.setNome("GFT START #2 Java");
-		bootcamp.setInicio(LocalDate.now());
-		bootcamp.setFim(bootcamp.getInicio().plusDays(45));
-		List<Conteudo> conteudosBootcamp = Arrays.asList(cursoJavaBasico, cursoJavaAvancado, mentoria);
-		bootcamp.setConteudos(conteudosBootcamp);
+		bootcamp.getListaDeConteudos().add(catalogoDaDio.get(2));
+		bootcamp.getListaDeConteudos().add(catalogoDaDio.get(3));
+		bootcamp.getListaDeConteudos().add(catalogoDaDio.get(4));
 		
-		Dev felipao = new Dev();
-		felipao.setNome("Felipão");
-		
-		Dev venilton = new Dev();
-		venilton.setNome("Venilton");
-		
-		felipao.inscrever(cursoDotNet);
-		felipao.inscrever(bootcamp);
-		felipao.progredir();
-		felipao.progredir();
-		
-		venilton.inscrever(bootcamp);
-		venilton.progredir();
-		venilton.progredir();
-		venilton.progredir();
-
-		System.out.println(String.format("XP Felipão: %.2f", felipao.calcularTotalXp()));
+		/*
+		System.out.println(String.format("XP Felipï¿½o: %.2f", felipao.calcularTotalXp()));
 		System.out.println(String.format("XP Venilton: %.2f", venilton.calcularTotalXp()));
 		
 		List<Dev> ranking = Arrays.asList(felipao, venilton).stream()
@@ -68,6 +47,10 @@ public class Main {
 		for (Dev dev : ranking) {
 			System.out.println(dev.getNome());
 		}
+		*/
+		
+		catalogoDaDio.stream().forEach(System.out::println);
+		System.out.println(bootcamp);
 	}
 
 }

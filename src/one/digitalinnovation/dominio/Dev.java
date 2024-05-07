@@ -7,39 +7,41 @@ import java.util.Optional;
 public class Dev {
 
 	private String nome;
-	private List<Conteudo> conteudosInscritos = new ArrayList<>();
-	private List<Conteudo> conteudosConcluidos = new ArrayList<>();
+	private List<Conteudo> studyingList = new ArrayList<>();
+	private List<Conteudo> finishedStudyingList = new ArrayList<>();
 
-	public void inscrever(Conteudo conteudo) {
-		if (conteudosInscritos.contains(conteudo)) {
-			System.err.println("Você já se inscreceu nesse conteúdo.");
+	public void addToStudyingList(Conteudo conteudo) {
+		if (studyingList.contains(conteudo)) {
+			System.err.println("The content has already been added.");
 		} else {
-			conteudosInscritos.add(conteudo);
+			studyingList.add(conteudo);
 		}
 	}
 
-	public void inscrever(Bootcamp bootcamp) {
+	/*
+	public void addToStudyingList(Bootcamp bootcamp) {
 		// Alternativa 1: foreach tradicional.
 		for (Conteudo conteudo : bootcamp.getConteudos()) {
-			inscrever(conteudo);
+			addToStudyingList(conteudo);
 		}
 		bootcamp.getDevs().add(this);
 		// Alternativa 2: API de Stream.
 		//bootcamp.getConteudos().stream().forEach(this::inscrever);
 	}
+	*/
 
 	public void progredir() {
-		Optional<Conteudo> conteudo = conteudosInscritos.stream().findFirst();
+		Optional<Conteudo> conteudo = studyingList.stream().findFirst();
 		if (conteudo.isPresent()) {
-			conteudosConcluidos.add(conteudo.get());
-			conteudosInscritos.remove(conteudo.get());
+			finishedStudyingList.add(conteudo.get());
+			studyingList.remove(conteudo.get());
 		} else {
-			System.err.println("Você não está mais inscrito em nenhum conteúdo.");
+			System.err.println("Vocï¿½ nï¿½o estï¿½ mais inscrito em nenhum conteï¿½do.");
 		}
 	}
 	
 	public double calcularTotalXp() {
-		return conteudosConcluidos.stream()
+		return finishedStudyingList.stream()
 				.mapToDouble(conteudo -> conteudo.calcularXp())
 				.sum();
 	}

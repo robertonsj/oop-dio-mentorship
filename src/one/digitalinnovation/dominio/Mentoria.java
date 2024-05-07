@@ -4,19 +4,35 @@ import java.time.LocalDateTime;
 
 public class Mentoria extends Conteudo {
 
-	private LocalDateTime data;
+	private final int peso = 1;
+	protected LocalDateTime datetime;
+	
+	public Mentoria(String titulo, String tutor, int duracao) {
+		super(titulo, tutor, duracao);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void setDatetime(LocalDateTime localDateTime) {
+		datetime = localDateTime;
+	}
+	
 
 	@Override
-	public double calcularXp() {
-		return XP_PADRAO;
+	public double calcularXp(){
+		// TODO Auto-generated method stub
+		return getXP_PADRAO() * peso;
 	}
 
-	public LocalDateTime getData() {
-		return data;
+	@Override
+	public String toString() {
+		StringBuilder info = new StringBuilder("------------ *** ------------\n");
+		info.append("Mentoria" + super.toString() + "[Date and time=" + datetime + "]\n");
+		return info.toString();
 	}
 
-	public void setData(LocalDateTime data) {
-		this.data = data;
-	}
+	
+	
+	
+
 
 }
